@@ -28,7 +28,7 @@ if(isset($_POST['btn-submit']))
        <br /><br />
        We got a request to reset your password, click the following link,
        <br /><br />
-       <a href='http://10.206.33.24/signup_login_email_verification/resetpass.php?id=$id&code=$code'>Click here to reset your password</a>
+       <a href='http://10.206.33.24/tracker/resetpass.php?id=$id&code=$code'>Click here to reset your password</a>
        <br /><br />
        Thank you :) Have a great day!!!
        ";
