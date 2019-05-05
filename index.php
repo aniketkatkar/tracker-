@@ -15,61 +15,91 @@ if(isset($_POST['btn-login']))
  
  if($user_login->login($email,$upass))
  {
-  $user_login->redirect('home.php');
+  $user_login->redirect('home.php'); 
  }
 }
 ?>
 
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Login | Coding Cage</title>
-    <!-- Bootstrap -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
-    <link href="assets/styles.css" rel="stylesheet" media="screen">
-     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-  </head>
-  <body id="login">
-    <div class="container">
-  <?php 
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+  <meta name="author" content="GeeksLabs">
+  <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+  <link rel="shortcut icon" href="img/favicon.png"> 
+
+  <title>Login Page | Just Dance</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- bootstrap theme -->
+  <link href="css/bootstrap-theme.css" rel="stylesheet">
+  <!--external css-->
+  <!-- font icon -->
+  <link href="css/elegant-icons-style.css" rel="stylesheet" />
+  <link href="css/font-awesome.css" rel="stylesheet" />
+  <!-- Custom styles -->
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/style-responsive.css" rel="stylesheet" />
+
+</head>
+
+<body class="login-img3-body">
+
+  <div class="container">
+  
+    <form class="login-form" method="post">
+    <?php 
   if(isset($_GET['inactive']))
   {
    ?>
-            <div class='alert alert-error'>
+            <div class='alert alert-block alert-danger fade in'>
     <button class='close' data-dismiss='alert'>&times;</button>
     <strong>Sorry!</strong> This Account is not Activated Go to your Inbox and Activate it. 
    </div>
             <?php
   }
   ?>
-        <form class="form-signin" method="post">
-        <?php
+    <?php
         if(isset($_GET['error']))
   {
    ?>
-            <div class='alert alert-success'>
+            <div class='alert alert-success fade in'>
     <button class='close' data-dismiss='alert'>&times;</button>
     <strong>Wrong Details!</strong> 
    </div>
             <?php
   }
   ?>
-        <h2 class="form-signin-heading">Sign In.</h2><hr />
-        <input type="email" class="input-block-level" placeholder="Email address" name="txtemail" required />
-        <input type="password" class="input-block-level" placeholder="Password" name="txtupass" required />
-      <hr />
-        <button class="btn btn-large btn-primary" type="submit" name="btn-login">Sign in</button>
-        <a href="signup.php" style="float:right;" class="btn btn-large">Sign Up</a><hr />
-        <a href="fpass.php">Lost your Password ? </a>
-      </form>
+      <div class="login-wrap">
+        <p class="login-img"><i class="icon_lock_alt"></i></p>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="icon_profile"></i></span>
+          <input type="text" class="form-control" placeholder="Email" name="txtemail" autofocus>
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="icon_key_alt"></i></span>
+          <input type="password" class="form-control" name="txtupass" placeholder="Password">
+        </div>
+        <label class="checkbox">
+                <!-- <input type="checkbox" value="remember-me"> Remember me -->
+                <span class="pull-right"> <a href="fpass.php"> Forgot Password?</a></span>
+            </label>
+        <button class="btn btn-primary btn-lg btn-block" name="btn-login" type="submit">Login</button>
+        <a style="color:#fff" href="signup.php" class="btn btn-info btn-lg btn-block" type="submit"><span style="color:white">Signup</span></a>
+      </div>
+    </form>
+    <div class="text-right">
+      <div style="margin-top:20%; color:white" class="credits">
+          Powered by <a style="color:white" href="https://10.206.33.24/">- <b>Team Just Dance</b></a>
+        </div>
+    </div>
+  </div>
 
-    </div> <!-- /container -->
-    <script src="bootstrap/js/jquery-1.9.1.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-  </body>
+
+</body>
+
 </html>

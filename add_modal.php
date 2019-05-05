@@ -36,12 +36,12 @@
 						</div>
 						<div class="col-lg-10">
 							<select name="task_status" style="width:100%">
-								<option value="volvo">On-track</option>
-								<option value="saab">Not Started</option>
-								<option value="mercedes">On Hold</option>
-								<option value="audi">At Risk</option>
-								<option value="audi">Delayed</option>
-								<option value="audi">Completed</option>
+							<option value="On Track">On-track</option>
+								<option value="Not Started">Not Started</option>
+								<option value="On Hold">On Hold</option>
+								<option value="At Risk">At Risk</option>
+								<option value="Delayed">Delayed</option>
+								<option value="Completed">Completed</option>
 							</select>
 						</div>
 					</div>

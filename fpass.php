@@ -8,7 +8,7 @@ if($user->is_logged_in()!="")
  $user->redirect('home.php');
 }
 
-if(isset($_POST['btn-submit']))
+if(isset($_POST['btn-submit'])) 
 {
  $email = $_POST['txtemail'];
  
@@ -53,25 +53,38 @@ if(isset($_POST['btn-submit']))
 ?>
 
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Forgot Password</title>
-    <!-- Bootstrap -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
-    <link href="assets/styles.css" rel="stylesheet" media="screen">
-     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body id="login">
-    <div class="container">
+<html lang="en">
 
-      <form class="form-signin" method="post">
-        <h2 class="form-signin-heading">Forgot Password</h2><hr />
-        
-         <?php
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+  <meta name="author" content="GeeksLabs">
+  <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+  <link rel="shortcut icon" href="img/favicon.png">
+
+  <title>Login Page 2 | Creative - Bootstrap 3 Responsive Admin Template</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- bootstrap theme -->
+  <link href="css/bootstrap-theme.css" rel="stylesheet">
+  <!--external css-->
+  <!-- font icon -->
+  <link href="css/elegant-icons-style.css" rel="stylesheet" />
+  <link href="css/font-awesome.css" rel="stylesheet" />
+  <!-- Custom styles -->
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/style-responsive.css" rel="stylesheet" />
+
+</head>
+
+<body class="login-img3-body">
+
+  <div class="container">
+
+    <form class="login-form" action="index.html">
+    <?php
    if(isset($msg))
    {
     echo $msg;
@@ -85,14 +98,24 @@ if(isset($_POST['btn-submit']))
                 <?php
    }
    ?>
+      <div class="login-wrap">
+        <p class="login-img"><i class="icon_lock_alt"></i></p>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="icon_profile"></i></span>
+          <input type="text" class="form-control" name="txtemail" placeholder="Ubisoft Email" autofocus>
+        </div>
         
-        <input type="email" class="input-block-level" placeholder="Email address" name="txtemail" required />
-      <hr />
-        <button class="btn btn-danger btn-primary" type="submit" name="btn-submit">Generate new Password</button>
-      </form>
+        <button class="btn btn-primary btn-lg btn-block" name="btn-submit" type="submit">Generate new Password</button>
+      </div>
+    </form>
+    <div class="text-right">
+      <div style="color:white; margin-top:20%" class="credits">
+          Powered by <a style="color:white" href="https://10.206.33.24/">- Team Just Dance</a>
+        </div>
+    </div>
+  </div>
 
-    </div> <!-- /container -->
-    <script src="bootstrap/js/jquery-1.9.1.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-  </body>
+
+</body>
+
 </html>
