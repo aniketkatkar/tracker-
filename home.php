@@ -13,6 +13,8 @@ $stmt = $user_home->runQuery("SELECT * FROM tbl_users WHERE userID=:uid");
 $stmt->execute(array(":uid"=>$_SESSION['userSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
+$user_name = $row['userName'];
+
 ?>
 <?php include('add_modal.php'); ?>
 <!DOCTYPE html>
@@ -61,7 +63,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
         <ul class="nav top-menu">
           <li>
             <form class="navbar-form">
-              <input class="form-control" placeholder="Search" type="text">
+              <input id="myInput" class="form-control" onkeyup="searchname();" placeholder="Search" type="text">
             </form>
           </li>
         </ul>
@@ -113,7 +115,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">
           <li class="">
-            <a class="" href="index.html">
+            <a class="" href="home.php">
               <i class="icon_house_alt"></i>
               <span>Dashboard</span>
             </a>
@@ -145,7 +147,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
                 <a href="#addnew" data-toggle="modal" class="btn btn-primary" style="float:right">Create a new task</a>
               </header>
               <div class="table-responsive"></div>
-              <table class="table table-striped table-advance table-hover">
+              <table id="myTable" class="table table-striped table-advance table-hover">
                 <tbody>
                   <tr>
                     <th><i class="icon_profile"></i> Task Name</th>
@@ -158,17 +160,17 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
                     <th><i class="icon_cogs"></i> Actions</th>
                   </tr>
                   <?php				
-                    $query=mysqli_query($conn,"select * from tasks");
+                    $query=mysqli_query($conn,"select * from tasks where created_by = '$user_name'");
                     while($row=mysqli_fetch_array($query)){
                       ?>
                       <tr>
                         <td><?php echo $row['task_name']; ?></td>
                         <td><?php echo $row['task_description']; ?></td>
                         <td><?php echo $row['task_status']; ?></td>
-                                    <td><?php echo $row['created_date']; ?></td>
-                                    <td><?php echo $row['due_date']; ?></td>
-                                    <td><?php echo $row['completed_date']; ?></td>
-                                    <td><?php echo $row['comment']; ?></td>
+                        <td><?php echo $row['created_date']; ?></td>
+                        <td><?php echo $row['due_date']; ?></td>
+                        <td><?php echo $row['completed_date']; ?></td>
+                        <td><?php echo $row['comment']; ?></td>
                         <td>
                                     <a class="btn btn-primary" href='update.php?task_id=<?php echo $row['task_id'] ?>'><i class="icon_plus_alt2"></i>Update</a> |
                                     <a class="btn btn-danger" href='delete.php?task_id=<?php echo $row['task_id'] ?>'><i class="icon_close_alt2"></i>Delete</a>
@@ -208,5 +210,25 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 </body>
+<script>
+function searchname() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
 
 </html>

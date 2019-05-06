@@ -1,4 +1,21 @@
 <?php
+
+session_start(); 
+require_once 'class.user.php';
+include_once 'simpledbconfig.php';
+$user_home = new USER();
+ 
+if(!$user_home->is_logged_in())
+{
+ $user_home->redirect('index.php');
+}
+
+$stmt = $user_home->runQuery("SELECT * FROM tbl_users WHERE userID=:uid");
+$stmt->execute(array(":uid"=>$_SESSION['userSession']));
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$user_name = $row['userName'];
+$user_email = $row['userEmail'];
 // Process delete operation after confirmation
 if(isset($_POST["task_id"]) && !empty($_POST["task_id"])){
     // Include config file
@@ -50,7 +67,7 @@ if(isset($_POST["task_id"]) && !empty($_POST["task_id"])){
   <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
   <link rel="shortcut icon" href="img/favicon.png">
 
-  <title>Blank | Creative - Bootstrap 3 Responsive Admin Template</title>
+  <title>Delete Tasks | Just Dance</title>
  
   <!-- Bootstrap CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -77,7 +94,7 @@ if(isset($_POST["task_id"]) && !empty($_POST["task_id"])){
       </div>
 
       <!--logo start-->
-      <a href="index.html" class="logo">Nice <span class="lite">Admin</span></a>
+      <a href="home.php" class="logo">Task<span class="lite">Tracker</span></a>
       <!--logo end-->
 
       <div class="nav search-row" id="top_menu">
@@ -100,7 +117,6 @@ if(isset($_POST["task_id"]) && !empty($_POST["task_id"])){
           <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
-                                <img alt="" src="img/avatar1_small.jpg">
                             </span>
                             <span class="username"><?php echo $row['userEmail']; ?></span>
                             <b class="caret"></b>
@@ -132,73 +148,10 @@ if(isset($_POST["task_id"]) && !empty($_POST["task_id"])){
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">
           <li class="">
-            <a class="" href="index.html">
+            <a class="" href="home.php">
                           <i class="icon_house_alt"></i>
                           <span>Dashboard</span>
                       </a>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;" class="">
-                          <i class="icon_document_alt"></i>
-                          <span>Forms</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-            <ul class="sub">
-              <li><a class="" href="form_component.html">Form Elements</a></li>
-              <li><a class="" href="form_validation.html">Form Validation</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;" class="">
-                          <i class="icon_desktop"></i>
-                          <span>UI Fitures</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-            <ul class="sub">
-              <li><a class="" href="general.html">Components</a></li>
-              <li><a class="" href="buttons.html">Buttons</a></li>
-              <li><a class="" href="grids.html">Grids</a></li>
-            </ul>
-          </li>
-          <li>
-            <a class="" href="widgets.html">
-                          <i class="icon_genius"></i>
-                          <span>Widgets</span>
-                      </a>
-          </li>
-          <li>
-            <a class="" href="chart-chartjs.html">
-                          <i class="icon_piechart"></i>
-                          <span>Charts</span>
-
-                      </a>
-
-          </li>
-
-          <li class="sub-menu">
-            <a href="javascript:;" class="">
-                          <i class="icon_table"></i>
-                          <span>Tables</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-            <ul class="sub">
-              <li><a class="" href="basic_table.html">Basic Table</a></li>
-            </ul>
-          </li>
-
-          <li class="sub-menu ">
-            <a href="javascript:;" class="">
-                          <i class="icon_documents_alt"></i>
-                          <span>Pages</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-            <ul class="sub">
-              <li><a class="" href="profile.html">Profile</a></li>
-              <li><a class="" href="login.html"><span>Login Page</span></a></li>
-              <li><a class="" href="contact.html"><span>Contact Page</span></a></li>
-              <li><a class="active" href="blank.html">Blank Page</a></li>
-              <li><a class="" href="404.html">404 Error</a></li>
-            </ul>
           </li>
 
         </ul>
