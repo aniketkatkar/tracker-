@@ -13,12 +13,11 @@ if($reg_user->is_logged_in()!="")
 if(isset($_POST['btn-signup']))
 {
  $uname = trim($_POST['txtuname']);
- $tester_name = trim($_POST['txtname']);
  $email = trim($_POST['txtemail']);
  $upass = trim($_POST['txtpass']);
  $code = md5(uniqid(rand()));
  
- $stmt = $reg_user->runQuery("SELECT * FROM tbl_users WHERE userEmail=:email_id");
+ $stmt = $reg_user->runQuery("SELECT * FROM tbl_admin WHERE adminEmail=:email_id");
  $stmt->execute(array(":email_id"=>$email));
  $row = $stmt->fetch(PDO::FETCH_ASSOC);
  
@@ -27,13 +26,13 @@ if(isset($_POST['btn-signup']))
   $msg = "
         <div class='alert alert-error'>
     <button class='close' data-dismiss='alert'>&times;</button>
-     <strong>Sorry !</strong>  email allready exists , Please Try another one
+     <strong>Sorry !</strong>  email already exists , Please Try another one
      </div>
      ";
  }
  else
  {
-  if($reg_user->register($uname,$tester_name,$email,$upass,$code))
+  if($reg_user->register($uname,$email,$upass,$code))
   {   
    $id = $reg_user->lasdID();  
    $key = base64_encode($id);
@@ -45,19 +44,19 @@ if(isset($_POST['btn-signup']))
       Welcome to Task Tracker!<br/>
       To complete your registration  please , just click following link<br/>
       <br /><br />
-      <a href='http://10.206.33.24/tracker/verify.php?id=$id&code=$code'>Click HERE to Activate :)</a>
+      <a href='http://10.206.33.24/tracker/admin/verify.php?id=$id&code=$code'>Click HERE to Activate :)</a>
       <br /><br />
-      Thanks,<br />
-      Team Just Dance";
+      Thanks,
+      Just Dance Team";
       
-   $subject = "Confirm Registration";
+   $subject = "Confirm Registration | Task Tracker";
       
    $reg_user->send_mail($email,$message,$subject); 
    $msg = "
      <div class='alert alert-success'>
       <button class='close' data-dismiss='alert'>&times;</button>
       <strong>Success!</strong>  We've sent an email to $email.
-                    Please click on the confirmation link in the email to create your account. 
+                    Please click on the confirmation link in the email to activate your account. 
        </div>
      ";
   }
@@ -80,19 +79,19 @@ if(isset($_POST['btn-signup']))
   <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
   <link rel="shortcut icon" href="img/favicon.png">
 
-  <title>Login Page 2 | Creative - Bootstrap 3 Responsive Admin Template</title>
+  <title>Signup | Just Dance</title>
 
   <!-- Bootstrap CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
   <!-- bootstrap theme -->
-  <link href="css/bootstrap-theme.css" rel="stylesheet">
+  <link href="../css/bootstrap-theme.css" rel="stylesheet">
   <!--external css-->
   <!-- font icon -->
-  <link href="css/elegant-icons-style.css" rel="stylesheet" />
-  <link href="css/font-awesome.css" rel="stylesheet" />
+  <link href="../css/elegant-icons-style.css" rel="stylesheet" />
+  <link href="../css/font-awesome.css" rel="stylesheet" />
   <!-- Custom styles -->
-  <link href="css/style.css" rel="stylesheet">
-  <link href="css/style-responsive.css" rel="stylesheet" />
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/style-responsive.css" rel="stylesheet" />
 
 
 </head>
@@ -100,17 +99,15 @@ if(isset($_POST['btn-signup']))
 <body class="login-img3-body">
 
   <div class="container">
-  <?php if(isset($msg)) echo $msg;  ?>
+  <?php if(isset($msg)) 
+  echo '<p class="alert alert-success fade in">'.$msg.'</p>'; 
+  ?>
     <form class="login-form" method="post">
       <div class="login-wrap">
         <p class="login-img"><i class="icon_lock_alt"></i></p>
         <div class="input-group">
           <span class="input-group-addon"><i class="icon_profile"></i></span>
           <input type="text" class="form-control" name="txtuname" placeholder="Username" autofocus>
-        </div>
-        <div class="input-group">
-          <span class="input-group-addon"><i class="icon_profile"></i></span>
-          <input type="text" class="form-control" name="txtname" placeholder="Enter your Full name" autofocus>
         </div>
         <div class="input-group">
           <span class="input-group-addon"><i class="icon_profile"></i></span>

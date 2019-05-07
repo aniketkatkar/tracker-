@@ -26,15 +26,14 @@ class USER
   return $stmt;
  }
  
- public function register($uname,$tester_name,$email,$upass,$code)
+ public function register($uname,$email,$upass,$code)
  {
   try
   {       
    $password = md5($upass);
-   $stmt = $this->conn->prepare("INSERT INTO tbl_users(userName,tester_name,userEmail,userPass,tokenCode) 
-                                                VALUES(:user_name, :tester_name, :user_mail, :user_pass, :active_code)");
+   $stmt = $this->conn->prepare("INSERT INTO tbl_admin(adminName,adminEmail,adminPass,tokenCode) 
+                                                VALUES(:user_name, :user_mail, :user_pass, :active_code)");
    $stmt->bindparam(":user_name",$uname);
-   $stmt->bindparam(":tester_name",$tester_name);
    $stmt->bindparam(":user_mail",$email);
    $stmt->bindparam(":user_pass",$password);
    $stmt->bindparam(":active_code",$code);
@@ -51,7 +50,7 @@ class USER
  {
   try
   {
-   $stmt = $this->conn->prepare("SELECT * FROM tbl_users WHERE userEmail=:email_id");
+   $stmt = $this->conn->prepare("SELECT * FROM tbl_admin WHERE adminEmail=:email_id");
    $stmt->execute(array(":email_id"=>$email));
    $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
    
@@ -59,9 +58,9 @@ class USER
    {
     if($userRow['userStatus']=="Y")
     {
-     if($userRow['userPass']==md5($upass))
+     if($userRow['adminPass']==md5($upass))
      {
-      $_SESSION['userSession'] = $userRow['userID'];
+      $_SESSION['adminSession'] = $userRow['adminID'];
       return true;
      }
      else
@@ -91,7 +90,7 @@ class USER
  
  public function is_logged_in()
  {
-  if(isset($_SESSION['userSession']))
+  if(isset($_SESSION['adminSession']))
   {
    return true;
   }
@@ -105,12 +104,12 @@ class USER
  public function logout()
  {
   session_destroy();
-  $_SESSION['userSession'] = false;
+  $_SESSION['adminSession'] = false;
  }
  
  function send_mail($email,$message,$subject)
  {      
-  require_once('mailer/class.phpmailer.php');
+  require_once('../mailer/class.phpmailer.php');
   $mail = new PHPMailer();
   $mail->IsSMTP(); 
   $mail->SMTPDebug  = 0;                     
@@ -121,8 +120,8 @@ class USER
   $mail->AddAddress($email);
   $mail->Username="aniket.katkar@ubisoft.com";  
   $mail->Password="yourgmailpassword";            
-  $mail->SetFrom('aniket.katkar@ubisoft.com','Team Just Dance');
-  $mail->AddReplyTo("aniket.katkar@ubisoft.com","Team Just Dance");
+  $mail->SetFrom('aniket.katkar@ubisoft.com','Coding Cage');
+  $mail->AddReplyTo("aniket.katkar@ubisoft.com","Coding Cage");
   $mail->Subject    = $subject;
   $mail->MsgHTML($message);
   $mail->Send();
