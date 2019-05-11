@@ -31,7 +31,7 @@ if(isset($_GET['id']) && isset($_GET['code']))
 			else
 			{
 				$password = md5($cpass);
-				$stmt = $user->runQuery("UPDATE tbl_admin SET userPass=:upass WHERE adminID=:uid");
+				$stmt = $user->runQuery("UPDATE tbl_admin SET adminPass=:upass WHERE adminID=:uid");
 				$stmt->execute(array(":upass"=>$password,":uid"=>$rows['adminID']));
 				
 				$msg = "<div class='alert alert-success'>

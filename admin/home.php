@@ -111,7 +111,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
               </li>
               
               <li>
-                <a href="../logout.php"><i class="icon_key_alt"></i> Log Out</a>
+                <a href="logout.php"><i class="icon_key_alt"></i> Log Out</a>
               </li>
               
             </ul>
@@ -164,8 +164,13 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
                 <tbody>
                   <tr>
                     <th><i class="icon_profile"></i> Tester Name</th>
-                    <th><i class="icon_calendar"></i> Tasks created</th>
-                    <th><i class="icon_mail_alt"></i> Task Completed</th>
+                    <th><i class="icon_calendar"></i> Tester Email</th>
+                    <th style='text-align:center'><i class="icon_calendar"></i> Tasks assigned</th>
+                    <th style='text-align:center;color:#59c4ff'><i class="icon_calendar"></i> On Track</th>
+                    <th style='text-align:center;color:orange'><i class="icon_calendar"></i> On Hold</th>
+                    <th style='text-align:center;color:#ccbe00'><i class="icon_calendar"></i> Delayed</th>
+                    <th style='text-align:center;color:green'><i class="icon_calendar"></i> Completed</th>
+                    <th style='text-align:center;color:red'><i class="icon_calendar"></i> At Risk</th>
                     <th><i class="icon_cogs"></i> Actions</th>
                   </tr>
                   <?php				
@@ -173,26 +178,60 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
                     $sql = "SELECT * FROM tbl_users";
                     if($result = mysqli_query($conn, $sql)){
                         if(mysqli_num_rows($result) > 0){
-                            echo "<table class='table table-bordered table-striped'>";
-                                echo "<thead>";
-                                    echo "<tr>";
-                                        echo "<th>Name</th>";
-                                        echo "<th>Email</th>";
-                                        echo "<th>Action</th>";
-                                    echo "</tr>";
-                                echo "</thead>";
+                            
                                 echo "<tbody>";
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
                                         echo "<td>" . $row['tester_name'] . "</td>";
                                         echo "<td>" . $row['userEmail'] . "</td>";
+                                        $user_name = $row['userName'];
+                                        echo "<td style='text-align:center'>" ;
+                                        $query=mysqli_query($conn,"select count(1) from tasks where created_by = '$user_name'"); // AND task_status = 'On Hold'
+                                        while($row=mysqli_fetch_array($query)){
+                                          $count = $row[0];
+                                           echo $count; 
+                                        }
+                                        echo "</td>";
+                                        echo "<td style='text-align:center'>" ;
+                                        $query=mysqli_query($conn,"select count(1) from tasks where created_by = '$user_name' AND task_status = 'On Track'"); // AND task_status = 'On Hold'
+                                        while($row=mysqli_fetch_array($query)){
+                                          $count = $row[0];
+                                           echo $count; 
+                                        }
+                                        echo "</td>";
+                                        echo "<td style='text-align:center'>" ;
+                                        $query=mysqli_query($conn,"select count(1) from tasks where created_by = '$user_name' AND task_status = 'On Hold'"); // AND task_status = 'On Hold'
+                                        while($row=mysqli_fetch_array($query)){
+                                          $count = $row[0];
+                                           echo $count; 
+                                        }
+                                        echo "</td>";
+                                        echo "<td style='text-align:center'>" ;
+                                        $query=mysqli_query($conn,"select count(1) from tasks where created_by = '$user_name' AND task_status = 'Delayed'"); // AND task_status = 'On Hold'
+                                        while($row=mysqli_fetch_array($query)){
+                                          $count = $row[0];
+                                           echo $count; 
+                                        }
+                                        echo "</td>";
+                                        echo "<td style='text-align:center'>" ;
+                                        $query=mysqli_query($conn,"select count(1) from tasks where created_by = '$user_name' AND task_status = 'Completed'"); // AND task_status = 'On Hold'
+                                        while($row=mysqli_fetch_array($query)){
+                                          $count = $row[0];
+                                           echo $count; 
+                                        }
+                                        echo "</td>";
+                                        echo "<td style='text-align:center'>" ;
+                                        $query=mysqli_query($conn,"select count(1) from tasks where created_by = '$user_name' AND task_status = 'At Risk'"); // AND task_status = 'On Hold'
+                                        while($row=mysqli_fetch_array($query)){
+                                          $count = $row[0];
+                                           echo $count; 
+                                        }
+                                        echo "</td>";
                                         echo "<td>";
-                                            echo "<a href='read.php?id=". $row['userName'] ."' title='View Record' data-toggle='tooltip'><span class='glyphicon glyphicon-eye-open'></span></a>";
+                                            echo "<a href='read.php?id=". $user_name ."' title='View Record' data-toggle='tooltip'><span class='fa fa-file'> View Tasks</span></a>";
                                         echo "</td>";
                                     echo "</tr>";
                                 }
-                                echo "</tbody>";                            
-                            echo "</table>";
                             // Free result set
                             mysqli_free_result($result);
                         } else{

@@ -84,7 +84,7 @@ if(isset($_POST['btn-submit']))
 
   <div class="container">
 
-    <form class="login-form" action="index.html">
+    <form class="login-form" method="post">
     <?php
    if(isset($msg))
    {

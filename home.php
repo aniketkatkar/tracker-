@@ -42,11 +42,12 @@ $user_name = $row['userName'];
   <link href="css/style.css" rel="stylesheet">
   <link href="css/style-responsive.css" rel="stylesheet" />
 
+
 </head>
 
-<body>
+<body >
   <!-- container section start -->
-  <section id="container" class="">
+  <section id="container" >
     <!--header start-->
     <header class="header dark-bg">
       <div class="toggle-nav">
@@ -166,11 +167,11 @@ $user_name = $row['userName'];
                       <tr>
                         <td><?php echo $row['task_name']; ?></td>
                         <td><?php echo $row['task_description']; ?></td>
-                        <td><?php echo $row['task_status']; ?></td>
-                        <td><?php echo $row['created_date']; ?></td>
-                        <td><?php echo $row['due_date']; ?></td>
-                        <td><?php echo $row['completed_date']; ?></td>
-                        <td><?php echo $row['comment']; ?></td>
+                        <td style='text-align:center'><?php echo $row['task_status']; ?></td>
+                        <td style='text-align:center'><?php echo $row['created_date']; ?></td>
+                        <td style='text-align:center'><?php echo $row['due_date']; ?></td>
+                        <td style='text-align:center'><?php echo $row['completed_date']; ?></td>
+                        <td ><?php echo $row['comment']; ?></td>
                         <td>
                                     <a class="btn btn-primary" href='update.php?task_id=<?php echo $row['task_id'] ?>'><i class="icon_plus_alt2"></i>Update</a> |
                                     <a class="btn btn-danger" href='delete.php?task_id=<?php echo $row['task_id'] ?>'><i class="icon_close_alt2"></i>Delete</a>
@@ -230,5 +231,6 @@ function searchname() {
   }
 }
 </script>
+
 
 </html>

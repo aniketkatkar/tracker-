@@ -120,8 +120,8 @@ class USER
   $mail->AddAddress($email);
   $mail->Username="aniket.katkar@ubisoft.com";  
   $mail->Password="yourgmailpassword";            
-  $mail->SetFrom('aniket.katkar@ubisoft.com','Coding Cage');
-  $mail->AddReplyTo("aniket.katkar@ubisoft.com","Coding Cage");
+  $mail->SetFrom('aniket.katkar@ubisoft.com','Team Just Dance');
+  $mail->AddReplyTo("aniket.katkar@ubisoft.com","Team Just Dance");
   $mail->Subject    = $subject;
   $mail->MsgHTML($message);
   $mail->Send();

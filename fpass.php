@@ -8,7 +8,7 @@ if($user->is_logged_in()!="")
  $user->redirect('home.php');
 }
 
-if(isset($_POST['btn-submit'])) 
+if(isset($_POST['btn-submit']))
 {
  $email = $_POST['txtemail'];
  
@@ -24,14 +24,14 @@ if(isset($_POST['btn-submit']))
   $stmt->execute(array(":token"=>$code,"email"=>$email));
   
   $message= "
-       Hello, $email
-       <br /><br />
-       We got a request to reset your password, click the following link,
-       <br /><br />
-       <a href='http://10.206.33.24/tracker/resetpass.php?id=$id&code=$code'>Click here to reset your password</a>
-       <br /><br />
-       Thank you :) Have a great day!!!
-       ";
+  Hello, $email
+  <br /><br />
+  We got a request to reset your password, please click the following link to continue,
+  <br /><br />
+  <a href='http://10.206.33.24/tracker/resetpass.php?id=$id&code=$code'>click here to reset your password</a>
+  <br /><br />
+  Thank you :) Have a great day!!!
+  ";
   $subject = "Password Reset";
   
   $user->send_mail($email,$message,$subject);
@@ -41,6 +41,7 @@ if(isset($_POST['btn-submit']))
      We've sent an email to $email.
                     Please click on the password reset link in the email to generate a new password. 
       </div>";
+      header("refresh:10;index.php");
  }
  else
  {
@@ -83,7 +84,7 @@ if(isset($_POST['btn-submit']))
 
   <div class="container">
 
-    <form class="login-form" action="index.html">
+    <form class="login-form" method="post">
     <?php
    if(isset($msg))
    {

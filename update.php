@@ -138,7 +138,7 @@ $row = mysqli_fetch_array($result);
           <div class="col-lg-12">
             <h3 class="page-header"><i class="fa fa-files-o"></i> Update Tasks</h3>
             <ol class="breadcrumb">
-              <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
+              <li><i class="fa fa-home"></i><a href="home.php">Home</a></li>
               <li><i class="icon_document_alt"></i>Update Tasks</li>
             </ol>
           </div>
@@ -185,19 +185,19 @@ $row = mysqli_fetch_array($result);
                     <div class="form-group ">
                       <label for="cname" class="control-label col-lg-2">Due Date <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class="form-control" name="due_date" value="<?php echo $row['due_date']; ?>" type="date" required />
+                        <input class="form-control" name="due_date" value="<?php echo $row['due_date']; ?>" type="date" />
                       </div>
                     </div>
                     <div class="form-group ">
                       <label for="ccomment" class="control-label col-lg-2">Completed on</label>
                       <div class="col-lg-10">
-                        <input class="form-control" type="date" value="<?php echo $row['completed_date']; ?>" name="completed_date" required>
+                        <input class="form-control" type="date" value="<?php echo $row['completed_date']; ?>" name="completed_date"/>
                       </div>
 					</div>
 					<div class="form-group ">
                       <label for="ccomment" class="control-label col-lg-2">Comments</label>
                       <div class="col-lg-10">
-                        <textarea type="text" class="form-control" name="comment" required><?php echo $row['comment']; ?></textarea>
+                        <textarea type="text" class="form-control" name="comment" ><?php echo $row['comment']; ?></textarea>
                       </div>
                     </div>
                     <div class="form-group">
