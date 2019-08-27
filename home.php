@@ -9,7 +9,7 @@ if(!$user_home->is_logged_in())
  $user_home->redirect('index.php');
 }
  
-$stmt = $user_home->runQuery("SELECT * FROM tbl_users WHERE userID=:uid");
+$stmt = $user_home->runQuery("SELECT * FROM tracker_users WHERE userID=:uid");
 $stmt->execute(array(":uid"=>$_SESSION['userSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -28,7 +28,7 @@ $user_name = $row['userName'];
   <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
   <link rel="shortcut icon" href="img/favicon.png">
 
-  <title>Extra Task Tracker | Just Dance</title>
+  <title>Home | Task Tracker</title>
 
   <!-- Bootstrap CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -47,7 +47,7 @@ $user_name = $row['userName'];
 
 <body >
   <!-- container section start -->
-  <section id="container" >
+  <section id="container" class="">
     <!--header start-->
     <header class="header dark-bg">
       <div class="toggle-nav">
@@ -91,11 +91,9 @@ $user_name = $row['userName'];
                 <a href="#"><i class="icon_profile"></i> My Profile</a>
               </li>
               <li>
-                <a href="#"><i class="icon_mail_alt"></i> My Inbox</a>
+                <a href="help.html"><i class="icon_mail_alt"></i>Help</a>
               </li>
-              <li>
-                <a href="#"><i class="icon_clock_alt"></i> Timeline</a>
-              </li>
+               
               
               <li>
                 <a href="logout.php"><i class="icon_key_alt"></i> Log Out</a>
@@ -129,7 +127,7 @@ $user_name = $row['userName'];
     </aside>
 
     <!--main content start-->
-    <section id="main-content">
+    <section class="" id="main-content">
       <section class="wrapper">
         <div class="row">
           <div class="col-lg-12">
@@ -151,14 +149,14 @@ $user_name = $row['userName'];
               <table id="myTable" class="table table-striped table-advance table-hover">
                 <tbody>
                   <tr>
-                    <th><i class="icon_profile"></i> Task Name</th>
-                    <th><i class="icon_calendar"></i> Task Description</th>
-                    <th><i class="icon_mail_alt"></i> Task Status</th>
-                    <th><i class="icon_pin_alt"></i> Created on</th>
-                    <th><i class="icon_mobile"></i> Due date</th>
-                    <th><i class="icon_cogs"></i> Completed on</th>
-                    <th><i class="icon_cogs"></i> Comments</th>
-                    <th><i class="icon_cogs"></i> Actions</th>
+                    <th>Task Name</th>
+                    <th>Task Description</th>
+                    <th>Task Status</th>
+                    <th>Created on</th>
+                    <th>Due date</th>
+                    <th>Completed on</th>
+                    <th>Comments</th>
+                    <th>Actions</th>
                   </tr>
                   <?php				
                     $query=mysqli_query($conn,"select * from tasks where created_by = '$user_name'");
@@ -195,7 +193,7 @@ $user_name = $row['userName'];
   <!--main content end-->
   <div class="text-right">
     <div class="credits">
-      Powered by <a style="color:white" href="https://10.206.33.24/">- <b>Team Just Dance</b></a>
+      Powered by <a style="color:white" href="https://10.206.39.245/">- <b>Team Just Dance</b></a>
     </div>
   </div>
   </section>
@@ -231,6 +229,7 @@ function searchname() {
   }
 }
 </script>
-
-
+<script src="js/swirl.js"></script>
+<script src="js/noise.min.js"></script>
+	<script src="js/util.js"></script>
 </html>

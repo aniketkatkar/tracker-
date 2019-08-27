@@ -10,7 +10,7 @@ if(!$user_home->is_logged_in())
 }
  
 //admin users query
-$stmt = $user_home->runQuery("SELECT * FROM tbl_admin WHERE adminID=:uid");
+$stmt = $user_home->runQuery("SELECT * FROM tracker_admin WHERE adminID=:uid");
 $stmt->execute(array(":uid"=>$_SESSION['adminSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -104,11 +104,9 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
                 <a href="#"><i class="icon_profile"></i> My Profile</a>
               </li>
               <li>
-                <a href="#"><i class="icon_mail_alt"></i> My Inbox</a>
+                <a href="help.html"><i class="icon_mail_alt"></i>Help</a>
               </li>
-              <li>
-                <a href="#"><i class="icon_clock_alt"></i> Timeline</a>
-              </li>
+               
               
               <li>
                 <a href="logout.php"><i class="icon_key_alt"></i> Log Out</a>
@@ -175,7 +173,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
                   </tr>
                   <?php				
                     // Attempt select query execution
-                    $sql = "SELECT * FROM tbl_users";
+                    $sql = "SELECT * FROM tracker_users";
                     if($result = mysqli_query($conn, $sql)){
                         if(mysqli_num_rows($result) > 0){
                             
@@ -259,7 +257,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
   <!--main content end-->
   <div class="text-right">
     <div class="credits">
-      Powered by <a style="color:white" href="https://10.206.33.24/">- <b>Team Just Dance</b></a>
+      Powered by <a style="color:white" href="https://10.206.39.245/">- <b>Team Just Dance</b></a>
     </div>
   </div>
   </section>

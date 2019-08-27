@@ -15,14 +15,14 @@ if(isset($_GET['id']) && isset($_GET['code']))
  $statusY = "Y";
  $statusN = "N";
  
- $stmt = $user->runQuery("SELECT adminID,userStatus FROM tbl_admin WHERE adminID=:uID AND tokenCode=:code LIMIT 1");
+ $stmt = $user->runQuery("SELECT adminID,userStatus FROM tracker_admin WHERE adminID=:uID AND tokenCode=:code LIMIT 1");
  $stmt->execute(array(":uID"=>$id,":code"=>$code));
  $row=$stmt->fetch(PDO::FETCH_ASSOC);
  if($stmt->rowCount() > 0)
  {
   if($row['userStatus']==$statusN)
   {
-   $stmt = $user->runQuery("UPDATE tbl_admin SET userStatus=:status WHERE adminID=:uID");
+   $stmt = $user->runQuery("UPDATE tracker_admin SET userStatus=:status WHERE adminID=:uID");
    $stmt->bindparam(":status",$statusY);
    $stmt->bindparam(":uID",$id);
    $stmt->execute(); 

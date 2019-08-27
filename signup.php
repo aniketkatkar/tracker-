@@ -16,9 +16,10 @@ if(isset($_POST['btn-signup']))
  $tester_name = trim($_POST['txtname']);
  $email = trim($_POST['txtemail']);
  $upass = trim($_POST['txtpass']);
+ $project = trim($_POST['project_name']);
  $code = md5(uniqid(rand()));
  
- $stmt = $reg_user->runQuery("SELECT * FROM tbl_users WHERE userEmail=:email_id");
+ $stmt = $reg_user->runQuery("SELECT * FROM tracker_users WHERE userEmail=:email_id");
  $stmt->execute(array(":email_id"=>$email));
  $row = $stmt->fetch(PDO::FETCH_ASSOC);
  
@@ -33,7 +34,7 @@ if(isset($_POST['btn-signup']))
  }
  else
  {
-  if($reg_user->register($uname,$tester_name,$email,$upass,$code))
+  if($reg_user->register($uname,$tester_name,$email,$upass,$project,$code))
   {   
    $id = $reg_user->lasdID();  
    $key = base64_encode($id);
@@ -43,9 +44,10 @@ if(isset($_POST['btn-signup']))
       Hello $uname,
       <br /><br />
       Welcome to Task Tracker!<br/>
-      To complete your registration  please , just click following link<br/>
+      You have registered to the application with the username : $uname and email : $email for the project : $project.
+      To complete your registration please , just click following link<br/>
       <br /><br />
-      <a href='http://10.206.33.24/tracker/verify.php?id=$id&code=$code'>Click HERE to Activate :)</a>
+      <a href='http://10.206.39.245/tracker/verify.php?id=$id&code=$code'>Click HERE to Activate :)</a>
       <br /><br />
       Thanks,<br />
       Team Just Dance";
@@ -80,7 +82,7 @@ if(isset($_POST['btn-signup']))
   <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
   <link rel="shortcut icon" href="img/favicon.png">
 
-  <title>Login Page 2 | Creative - Bootstrap 3 Responsive Admin Template</title>
+  <title>Register | Task Tracker</title>
 
   <!-- Bootstrap CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -112,6 +114,13 @@ if(isset($_POST['btn-signup']))
           <span class="input-group-addon"><i class="icon_profile"></i></span>
           <input type="text" class="form-control" name="txtname" placeholder="Enter your Full name" autofocus>
         </div>
+        <div class="form-group">
+          <label style="float:left;color:black">Select Project</label>
+              <select name="project_name" style="width:100%">
+                  <option value="Just Dance">Just Dance</option>
+                  <option value="The Crew 2">The Crew 2</option>
+              </select>
+          </div>
         <div class="input-group">
           <span class="input-group-addon"><i class="icon_profile"></i></span>
           <input type="email" class="form-control" name="txtemail" placeholder="Ubisoft Email" >
@@ -132,7 +141,7 @@ if(isset($_POST['btn-signup']))
     <div class="text-right">
     <div style="margin-top:20%" class="credits">
           
-          Powered by <a style="color:white" href="https://10.206.33.24/">- <b>Team Just Dance</b></a>
+          Powered by <a style="color:white" href="https://10.206.39.245/">- <b>Team Just Dance</b></a>
         </div>
     </div>
   </div>

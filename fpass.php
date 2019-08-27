@@ -12,7 +12,7 @@ if(isset($_POST['btn-submit']))
 {
  $email = $_POST['txtemail'];
  
- $stmt = $user->runQuery("SELECT userID FROM tbl_users WHERE userEmail=:email LIMIT 1");
+ $stmt = $user->runQuery("SELECT userID FROM tracker_users WHERE userEmail=:email LIMIT 1");
  $stmt->execute(array(":email"=>$email));
  $row = $stmt->fetch(PDO::FETCH_ASSOC); 
  if($stmt->rowCount() == 1)
@@ -20,7 +20,7 @@ if(isset($_POST['btn-submit']))
   $id = base64_encode($row['userID']);
   $code = md5(uniqid(rand()));
   
-  $stmt = $user->runQuery("UPDATE tbl_users SET tokenCode=:token WHERE userEmail=:email");
+  $stmt = $user->runQuery("UPDATE tracker_users SET tokenCode=:token WHERE userEmail=:email");
   $stmt->execute(array(":token"=>$code,"email"=>$email));
   
   $message= "
@@ -28,7 +28,7 @@ if(isset($_POST['btn-submit']))
   <br /><br />
   We got a request to reset your password, please click the following link to continue,
   <br /><br />
-  <a href='http://10.206.33.24/tracker/resetpass.php?id=$id&code=$code'>click here to reset your password</a>
+  <a href='http://10.206.39.245/tracker/resetpass.php?id=$id&code=$code'>click here to reset your password</a>
   <br /><br />
   Thank you :) Have a great day!!!
   ";
@@ -111,7 +111,7 @@ if(isset($_POST['btn-submit']))
     </form>
     <div class="text-right">
       <div style="color:white; margin-top:20%" class="credits">
-          Powered by <a style="color:white" href="https://10.206.33.24/">- Team Just Dance</a>
+          Powered by <a style="color:white" href="https://10.206.39.245/">- Team Just Dance</a>
         </div>
     </div>
   </div>

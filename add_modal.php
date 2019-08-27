@@ -26,7 +26,7 @@
 							<label class="control-label" style="position:relative; top:7px;">Task Description:</label>
 						</div>
 						<div class="col-lg-10">
-							<textarea style="width:100%" type="text" class="form-control" name="task_description"></textarea>
+							<textarea style="width:100%" type="text" class="form-control" name="task_description" maxlength="400"></textarea>
 						</div>
 					</div>
 					<div style="height:5px;"></div>
@@ -36,12 +36,12 @@
 						</div>
 						<div class="col-lg-10">
 							<select name="task_status" style="width:100%">
-							<option value="On Track">On-track</option>
+							<option style="color:darkblue" value="On Track">On-track</option>
 								<option value="Not Started">Not Started</option>
-								<option value="On Hold">On Hold</option>
-								<option value="At Risk">At Risk</option>
-								<option value="Delayed">Delayed</option>
-								<option value="Completed">Completed</option>
+								<option style="color:orange" value="On Hold">On Hold</option>
+								<option style="color:red" value="At Risk">At Risk</option>
+								<option style="color:#cccc00" value="Delayed">Delayed</option>
+								<option style="color:green" value="Completed">Completed</option>
 							</select>
 						</div>
 					</div>
@@ -69,12 +69,12 @@
 							<label class="control-label" style="position:relative; top:7px;">Comments:</label>
 						</div>
 						<div class="col-lg-10">
-							<textarea style="width:100%" type="text" class="form-control" name="comment"></textarea>
+							<textarea style="width:100%" type="text" class="form-control" maxlength="400" name="comment"></textarea>
 						</div>
 					</div>
 					
                 </div> 
-				</div>
+				</div><p style="color:lightgrey">Max limit : 400 characters</p>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
                     <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a>

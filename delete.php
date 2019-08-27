@@ -10,7 +10,7 @@ if(!$user_home->is_logged_in())
  $user_home->redirect('index.php');
 }
 
-$stmt = $user_home->runQuery("SELECT * FROM tbl_users WHERE userID=:uid");
+$stmt = $user_home->runQuery("SELECT * FROM tracker_users WHERE userID=:uid");
 $stmt->execute(array(":uid"=>$_SESSION['userSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -126,9 +126,7 @@ if(isset($_POST["task_id"]) && !empty($_POST["task_id"])){
               <li class="eborder-top">
                 <a href="#"><i class="icon_profile"></i> My Profile</a>
               </li>
-              <li>
-                <a href="#"><i class="icon_clock_alt"></i> Timeline</a>
-              </li>
+               
               <li>
                 <a href="logout.php"><i class="icon_key_alt"></i> Log Out</a>
               </li>
@@ -199,7 +197,7 @@ if(isset($_POST["task_id"]) && !empty($_POST["task_id"])){
     <div class="text-right">
       <div class="credits">
           
-          Powered by <a style="color:white" href="https://10.206.33.24/">- <b>Team Just Dance</b></a>
+          Powered by <a style="color:white" href="https://10.206.39.245/">- <b>Team Just Dance</b></a>
         </div>
     </div>
   </section>

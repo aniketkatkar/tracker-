@@ -9,7 +9,7 @@ if(!$user_home->is_logged_in())
  $user_home->redirect('index.php');
 }
  
-$stmt = $user_home->runQuery("SELECT * FROM tbl_admin WHERE adminID=:uid");
+$stmt = $user_home->runQuery("SELECT * FROM tracker_admin WHERE adminID=:uid");
 $stmt->execute(array(":uid"=>$_SESSION['adminSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 //$user_name = $row['userName'];
@@ -88,11 +88,9 @@ $id = $_GET['id'];
                 <a href="#"><i class="icon_profile"></i> My Profile</a>
               </li>
               <li>
-                <a href="#"><i class="icon_mail_alt"></i> My Inbox</a>
+                <a href="help.html"><i class="icon_mail_alt"></i>Help</a>
               </li>
-              <li>
-                <a href="#"><i class="icon_clock_alt"></i> Timeline</a>
-              </li>
+               
               
               <li>
                 <a href="logout.php"><i class="icon_key_alt"></i> Log Out</a>
@@ -141,7 +139,7 @@ $id = $_GET['id'];
           <div class="col-lg-12">
             <section class="panel">
               <header class="panel-heading">
-                Your Assigned Tasks - <?php $query=mysqli_query($conn,"select * from tbl_users where userName = '$id'"); while($row=mysqli_fetch_array($query)){echo $row['tester_name'];}?>
+                Your Assigned Tasks - <?php $query=mysqli_query($conn,"select * from tracker_users where userName = '$id'"); while($row=mysqli_fetch_array($query)){echo $row['tester_name'];}?>
               </header>
               <div class="table-responsive"></div>
               <table id="myTable" class="table table-striped table-advance table-hover">
@@ -187,7 +185,7 @@ $id = $_GET['id'];
   <!--main content end-->
   <div class="text-right">
     <div class="credits">
-      Powered by <a style="color:white" href="https://10.206.33.24/">- <b>Team Just Dance</b></a>
+      Powered by <a style="color:white" href="https://10.206.39.245/">- <b>Team Just Dance</b></a>
     </div>
   </div>
   </section>

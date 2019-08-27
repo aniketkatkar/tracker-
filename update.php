@@ -9,7 +9,7 @@ if(!$user_home->is_logged_in())
  $user_home->redirect('index.php');
 }
 
-$stmt = $user_home->runQuery("SELECT * FROM tbl_users WHERE userID=:uid");
+$stmt = $user_home->runQuery("SELECT * FROM tracker_users WHERE userID=:uid");
 $stmt->execute(array(":uid"=>$_SESSION['userSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -97,9 +97,7 @@ $row = mysqli_fetch_array($result);
               <li class="eborder-top">
                 <a href="#"><i class="icon_profile"></i> My Profile</a>
               </li>
-              <li>
-                <a href="#"><i class="icon_clock_alt"></i> Timeline</a>
-              </li>
+               
               <li>
                 <a href="logout.php"><i class="icon_key_alt"></i> Log Out</a>
               </li>
@@ -166,19 +164,19 @@ $row = mysqli_fetch_array($result);
                     <div class="form-group ">
                       <label for="cemail" class="control-label col-lg-2">Task Description <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <textarea class="form-control" type="text" name="task_description" required ><?php echo $row['task_description']; ?></textarea>
+                        <textarea class="form-control" type="text" name="task_description" required maxlength="400"><?php echo $row['task_description']; ?></textarea>
                       </div>
                     </div>
                     <div class="form-group ">
                       <label for="curl" class="control-label col-lg-2">Task Status</label>
                       <div class="col-lg-10">
 					  <select class="form-control m-bot15" name="task_status" style="width:100%" value="<?php echo $row['task_status']; ?>">
-								<option value="On Track">On-track</option>
+								<option style="color:darkblue" value="On Track">On-track</option>
 								<option value="Not Started">Not Started</option>
-								<option value="On Hold">On Hold</option>
-								<option value="At Risk">At Risk</option>
-								<option value="Delayed">Delayed</option>
-								<option value="Completed">Completed</option>
+								<option style="color:orange" value="On Hold">On Hold</option>
+								<option style="color:red" value="At Risk">At Risk</option>
+								<option style="color:#cccc00" value="Delayed">Delayed</option>
+								<option style="color:green" value="Completed">Completed</option>
 							</select>
                       </div>
                     </div>
@@ -197,9 +195,9 @@ $row = mysqli_fetch_array($result);
 					<div class="form-group ">
                       <label for="ccomment" class="control-label col-lg-2">Comments</label>
                       <div class="col-lg-10">
-                        <textarea type="text" class="form-control" name="comment" ><?php echo $row['comment']; ?></textarea>
+                        <textarea type="text" class="form-control" name="comment" maxlength="400"><?php echo $row['comment']; ?></textarea>
                       </div>
-                    </div>
+                    </div><p style="color:lightgrey">Max limit : 400 characters</p>
                     <div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
                         <button class="btn btn-primary" name="submit" type="submit">Save</button>
@@ -220,7 +218,7 @@ $row = mysqli_fetch_array($result);
     <!--main content end-->
     <div class="text-right">
       <div class="credits">
-        Powered by <a style="color:white" href="https://10.206.33.24/">- <b>Team Just Dance</b></a>
+        Powered by <a style="color:white" href="https://10.206.39.245/">- <b>Team Just Dance</b></a>
       </div>
     </div>
   </section>

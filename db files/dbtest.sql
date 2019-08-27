@@ -25,11 +25,11 @@ SET time_zone
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_users1`
+-- Table structure for table `tracker_users`
 --
 
 CREATE TABLE
-IF NOT EXISTS `tbl_users`
+IF NOT EXISTS `tracker_users`
 (
   `userID` int
 (11) NOT NULL AUTO_INCREMENT,

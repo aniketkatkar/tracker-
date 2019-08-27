@@ -17,7 +17,7 @@ if(isset($_POST['btn-signup']))
  $upass = trim($_POST['txtpass']);
  $code = md5(uniqid(rand()));
  
- $stmt = $reg_user->runQuery("SELECT * FROM tbl_admin WHERE adminEmail=:email_id");
+ $stmt = $reg_user->runQuery("SELECT * FROM tracker_admin WHERE adminEmail=:email_id");
  $stmt->execute(array(":email_id"=>$email));
  $row = $stmt->fetch(PDO::FETCH_ASSOC);
  
@@ -44,7 +44,7 @@ if(isset($_POST['btn-signup']))
       Welcome to Task Tracker!<br/>
       To complete your registration  please , just click following link<br/>
       <br /><br />
-      <a href='http://10.206.33.24/tracker/admin/verify.php?id=$id&code=$code'>Click HERE to Activate :)</a>
+      <a href='http://10.206.39.245/tracker/admin/verify.php?id=$id&code=$code'>Click HERE to Activate :)</a>
       <br /><br />
       Thanks,
       Just Dance Team";
@@ -129,7 +129,7 @@ if(isset($_POST['btn-signup']))
     <div class="text-right">
     <div style="margin-top:20%" class="credits">
           
-          Powered by <a style="color:white" href="https://10.206.33.24/">- <b>Team Just Dance</b></a>
+          Powered by <a style="color:white" href="https://10.206.39.245/">- <b>Team Just Dance</b></a>
         </div>
     </div>
   </div>

@@ -26,17 +26,18 @@ class USER
   return $stmt;
  }
  
- public function register($uname,$tester_name,$email,$upass,$code)
+ public function register($uname,$tester_name,$email,$upass,$project,$code)
  {
   try
   {       
    $password = md5($upass);
-   $stmt = $this->conn->prepare("INSERT INTO tbl_users(userName,tester_name,userEmail,userPass,tokenCode) 
-                                                VALUES(:user_name, :tester_name, :user_mail, :user_pass, :active_code)");
+   $stmt = $this->conn->prepare("INSERT INTO tracker_users(userName,tester_name,userEmail,userPass,project_name,tokenCode) 
+                                                VALUES(:user_name, :tester_name, :user_mail, :user_pass,:user_project, :active_code)");
    $stmt->bindparam(":user_name",$uname);
    $stmt->bindparam(":tester_name",$tester_name);
    $stmt->bindparam(":user_mail",$email);
    $stmt->bindparam(":user_pass",$password);
+   $stmt->bindparam(":user_project",$project);
    $stmt->bindparam(":active_code",$code);
    $stmt->execute(); 
    return $stmt;
@@ -51,7 +52,7 @@ class USER
  {
   try
   {
-   $stmt = $this->conn->prepare("SELECT * FROM tbl_users WHERE userEmail=:email_id");
+   $stmt = $this->conn->prepare("SELECT * FROM tracker_users WHERE userEmail=:email_id");
    $stmt->execute(array(":email_id"=>$email));
    $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
    

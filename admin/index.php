@@ -90,11 +90,15 @@ if(isset($_POST['btn-login']))
             </label>
         <button class="btn btn-primary btn-lg btn-block" name="btn-login" type="submit">Login</button>
         <a style="color:#fff" href="signup.php" class="btn btn-info btn-lg btn-block" type="submit"><span style="color:white">Signup</span></a>
+        <label class="checkbox">
+                <!-- <input type="checkbox" value="remember-me"> Remember me -->
+                <span class="pull-right"> <a href="http://10.206.39.245/tracker/index.php">Go to Testers Section</a></span>
+            </label>
       </div>
     </form>
     <div class="text-right">
       <div style="margin-top:20%; color:white" class="credits">
-          Powered by <a style="color:white" href="https://10.206.33.24/">- <b>Team Just Dance</b></a>
+          Powered by <a style="color:white" href="https://10.206.39.245/">- <b>Team Just Dance</b></a>
         </div>
     </div>
   </div>
