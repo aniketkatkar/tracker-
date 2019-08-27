@@ -84,6 +84,7 @@ if(isset($_POST['btn-login']))
   ?>
       <div class="login-wrap">
         <p class="login-img"><i class="icon_lock_alt"></i></p>
+        <p>Tester Login</p>
         <div class="input-group">
           <span class="input-group-addon"><i class="icon_profile"></i></span>
           <input type="text" class="form-control" placeholder="Email" name="txtemail" autofocus>

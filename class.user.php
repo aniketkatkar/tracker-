@@ -122,8 +122,8 @@ class USER
   $mail->AddAddress($email);
   $mail->Username="aniket.katkar@ubisoft.com";  
   $mail->Password="yourgmailpassword";            
-  $mail->SetFrom('aniket.katkar@ubisoft.com','Team Just Dance');
-  $mail->AddReplyTo("aniket.katkar@ubisoft.com","Team Just Dance");
+  $mail->SetFrom('aniket.katkar@ubisoft.com','Tracker Server');
+  $mail->AddReplyTo("aniket.katkar@ubisoft.com","Tracker Server");
   $mail->Subject    = $subject;
   $mail->MsgHTML($message);
   $mail->Send();

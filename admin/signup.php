@@ -15,6 +15,7 @@ if(isset($_POST['btn-signup']))
  $uname = trim($_POST['txtuname']);
  $email = trim($_POST['txtemail']);
  $upass = trim($_POST['txtpass']);
+ $project = trim($_POST['project_name']);
  $code = md5(uniqid(rand()));
  
  $stmt = $reg_user->runQuery("SELECT * FROM tracker_admin WHERE adminEmail=:email_id");
@@ -32,7 +33,7 @@ if(isset($_POST['btn-signup']))
  }
  else
  {
-  if($reg_user->register($uname,$email,$upass,$code))
+  if($reg_user->register($uname,$email,$upass,$project,$code))
   {   
    $id = $reg_user->lasdID();  
    $key = base64_encode($id);
@@ -42,12 +43,15 @@ if(isset($_POST['btn-signup']))
       Hello $uname,
       <br /><br />
       Welcome to Task Tracker!<br/>
+      You have registered to the application with the username : $uname and email : $email for the project : $project.
       To complete your registration  please , just click following link<br/>
       <br /><br />
-      <a href='http://10.206.39.245/tracker/admin/verify.php?id=$id&code=$code'>Click HERE to Activate :)</a>
+      <a href='http://10.206.39.245/tracker/admin/verify.php?id=$id&code=$code'>Click HERE to Activate</a>
       <br /><br />
       Thanks,
-      Just Dance Team";
+      Tracker Server<br><br><br>
+      
+      <i>This is an auto reply system. Please do not reply to this email. For any query, refer the Help page.</i>";
       
    $subject = "Confirm Registration | Task Tracker";
       
@@ -108,6 +112,13 @@ if(isset($_POST['btn-signup']))
         <div class="input-group">
           <span class="input-group-addon"><i class="icon_profile"></i></span>
           <input type="text" class="form-control" name="txtuname" placeholder="Username" autofocus>
+        </div>
+        <div class="form-group">
+          <label style="float:left;color:black">Select Project</label>
+              <select class="form-control" name="project_name" style="width:100%">
+                  <option value="Just Dance">Just Dance</option>
+                  <option value="The Crew 2">The Crew 2</option>
+              </select>
         </div>
         <div class="input-group">
           <span class="input-group-addon"><i class="icon_profile"></i></span>

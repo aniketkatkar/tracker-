@@ -47,10 +47,12 @@ if(isset($_POST['btn-signup']))
       You have registered to the application with the username : $uname and email : $email for the project : $project.
       To complete your registration please , just click following link<br/>
       <br /><br />
-      <a href='http://10.206.39.245/tracker/verify.php?id=$id&code=$code'>Click HERE to Activate :)</a>
+      <a href='http://10.206.39.245/tracker/verify.php?id=$id&code=$code'>Click HERE to Activate</a>
       <br /><br />
       Thanks,<br />
-      Team Just Dance";
+      Tracker Server<br><br><br>
+      
+      <i>This is an auto reply system. Please do not reply to this email. For any query, refer the Help page.</i>";
       
    $subject = "Confirm Registration";
       
@@ -116,11 +118,11 @@ if(isset($_POST['btn-signup']))
         </div>
         <div class="form-group">
           <label style="float:left;color:black">Select Project</label>
-              <select name="project_name" style="width:100%">
+              <select class="form-control" name="project_name" style="width:100%">
                   <option value="Just Dance">Just Dance</option>
                   <option value="The Crew 2">The Crew 2</option>
               </select>
-          </div>
+        </div>
         <div class="input-group">
           <span class="input-group-addon"><i class="icon_profile"></i></span>
           <input type="email" class="form-control" name="txtemail" placeholder="Ubisoft Email" >
