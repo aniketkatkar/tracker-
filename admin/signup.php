@@ -83,7 +83,7 @@ if(isset($_POST['btn-signup']))
   <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
   <link rel="shortcut icon" href="img/favicon.png">
 
-  <title>Signup | Just Dance</title>
+  <title>Signup | Task Tracker</title>
 
   <!-- Bootstrap CSS -->
   <link href="../css/bootstrap.min.css" rel="stylesheet">

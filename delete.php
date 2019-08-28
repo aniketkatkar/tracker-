@@ -67,7 +67,7 @@ if(isset($_POST["task_id"]) && !empty($_POST["task_id"])){
   <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
   <link rel="shortcut icon" href="img/favicon.png">
 
-  <title>Delete Tasks | Just Dance</title>
+  <title>Delete Tasks | Task Tracker</title>
  
   <!-- Bootstrap CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -123,9 +123,7 @@ if(isset($_POST["task_id"]) && !empty($_POST["task_id"])){
                         </a>
             <ul class="dropdown-menu extended logout">
               <div class="log-arrow-up"></div>
-              <li class="eborder-top">
-                <a href="#"><i class="icon_profile"></i> My Profile</a>
-              </li>
+                
                
               <li>
                 <a href="logout.php"><i class="icon_key_alt"></i> Log Out</a>

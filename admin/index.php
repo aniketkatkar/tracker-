@@ -31,7 +31,7 @@ if(isset($_POST['btn-login']))
   <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
   <link rel="shortcut icon" href="img/favicon.png"> 
 
-  <title>Login Page | Just Dance</title>
+  <title>Login Page | Task Tracker</title>
 
   <!-- Bootstrap CSS -->
   <link href="../css/bootstrap.min.css" rel="stylesheet">

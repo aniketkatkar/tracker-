@@ -64,7 +64,7 @@ if(isset($_POST['btn-submit']))
   <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
   <link rel="shortcut icon" href="img/favicon.png">
 
-  <title>Forget Password | Just Dance</title>
+  <title>Forget Password | Task Tracker</title>
 
   <!-- Bootstrap CSS -->
   <link href="../css/bootstrap.min.css" rel="stylesheet">

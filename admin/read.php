@@ -14,6 +14,7 @@ $stmt->execute(array(":uid"=>$_SESSION['adminSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 //$user_name = $row['userName'];
 $id = $_GET['id'];
+$project_name = $row['project_name'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +27,7 @@ $id = $_GET['id'];
   <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
   <link rel="shortcut icon" href="img/favicon.png">
 
-  <title>Extra Task Tracker | Just Dance</title>
+  <title>Extra Task Tracker | Task Tracker</title>
 
   <!-- Bootstrap CSS -->
   <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -84,11 +85,9 @@ $id = $_GET['id'];
             </a>
             <ul class="dropdown-menu extended logout">
               <div class="log-arrow-up"></div>
-              <li class="eborder-top">
-                <a href="#"><i class="icon_profile"></i> My Profile</a>
-              </li>
+                
               <li>
-                <a href="help.html"><i class="icon_mail_alt"></i>Help</a>
+                <a href="../help.html"><i class="icon_mail_alt"></i>Help</a>
               </li>
                
               
@@ -139,7 +138,7 @@ $id = $_GET['id'];
           <div class="col-lg-12">
             <section class="panel">
               <header class="panel-heading">
-                Your Assigned Tasks - <?php $query=mysqli_query($conn,"select * from tracker_users where userName = '$id'"); while($row=mysqli_fetch_array($query)){echo $row['tester_name'];}?>
+                Your Assigned Tasks - <?php $query=mysqli_query($conn,"SELECT * from tracker_users where userName = '$id' AND project_name='$project_name'"); while($row=mysqli_fetch_array($query)){echo $row['tester_name'];}?>
               </header>
               <div class="table-responsive"></div>
               <table id="myTable" class="table table-striped table-advance table-hover">
@@ -154,7 +153,7 @@ $id = $_GET['id'];
                     <th><i class="icon_cogs"></i> Comments</th>
                   </tr>
                   <?php				
-                    $query=mysqli_query($conn,"select * from tasks where created_by = '$id'");
+                    $query=mysqli_query($conn,"SELECT * from tasks where created_by = '$id' ");
                     while($row=mysqli_fetch_array($query)){
                       ?>
                       <tr>

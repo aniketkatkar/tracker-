@@ -51,7 +51,7 @@ class USER
  {
   try
   {
-   $stmt = $this->conn->prepare("SELECT * FROM tracker_admin WHERE adminEmail=:email_id");
+   $stmt = $this->conn->prepare("SELECT * FROM tracker_admin WHERE adminEmail=:email_id AND erole='lead'");
    $stmt->execute(array(":email_id"=>$email));
    $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
    

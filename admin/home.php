@@ -14,6 +14,7 @@ $stmt = $user_home->runQuery("SELECT * FROM tracker_admin WHERE adminID=:uid");
 $stmt->execute(array(":uid"=>$_SESSION['adminSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
+$project_name = $row['project_name'];
 // //testers users query
 // $stmt = $user_home->runQuery("SELECT * FROM tbl_users WHERE userID=:uid");
 // // $stmt->execute(array(":uid"=>$_SESSION['userSession']));
@@ -42,7 +43,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
   <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
   <link rel="shortcut icon" href="img/favicon.png">
 
-  <title>Extra Task Tracker | Just Dance</title>
+  <title>Extra Task Tracker | Task Tracker</title>
 
   <!-- Bootstrap CSS -->
   <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -100,11 +101,9 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
             </a>
             <ul class="dropdown-menu extended logout">
               <div class="log-arrow-up"></div>
-              <li class="eborder-top">
-                <a href="#"><i class="icon_profile"></i> My Profile</a>
-              </li>
+                
               <li>
-                <a href="help.html"><i class="icon_mail_alt"></i>Help</a>
+                <a href="../help.html"><i class="icon_mail_alt"></i>Help</a>
               </li>
                
               
@@ -173,7 +172,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
                   </tr>
                   <?php				
                     // Attempt select query execution
-                    $sql = "SELECT * FROM tracker_users";
+                    $sql = "SELECT * FROM tracker_users where project_name= '$project_name' ";
                     if($result = mysqli_query($conn, $sql)){
                         if(mysqli_num_rows($result) > 0){
                             
