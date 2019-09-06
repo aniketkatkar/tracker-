@@ -256,7 +256,7 @@ $project_name = $row['project_name'];
   <!--main content end-->
   <div class="text-right">
     <div class="credits">
-      Powered by <a style="color:white" href="https://10.206.39.245/">- <b>Team Just Dance</b></a>
+      Powered by <a style="color:white" href="  http://10.206.39.245/">- <b>Team Just Dance</b></a>
     </div>
   </div>
   </section>

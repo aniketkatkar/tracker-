@@ -107,7 +107,7 @@ if(isset($_POST['btn-login']))
     </form>
     <div class="text-right">
       <div style="margin-top:20%; color:white" class="credits">
-          Powered by <a style="color:white" href="https://10.206.39.245/">- <b>Team Just Dance</b></a>
+          Powered by <a style="color:white" href="  http://10.206.39.245/">- <b>Team Just Dance</b></a>
         </div>
     </div>
   </div>

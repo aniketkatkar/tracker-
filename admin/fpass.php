@@ -111,7 +111,7 @@ if(isset($_POST['btn-submit']))
     </form>
     <div class="text-right">
       <div style="color:white; margin-top:20%" class="credits">
-          Powered by <a style="color:white" href="https://10.206.39.245/">- Team Just Dance</a>
+          Powered by <a style="color:white" href="  http://10.206.39.245/">- Team Just Dance</a>
         </div>
     </div>
   </div>

@@ -155,11 +155,24 @@ $project_name = $row['project_name'];
                   <?php				
                     $query=mysqli_query($conn,"SELECT * from tasks where created_by = '$id' ");
                     while($row=mysqli_fetch_array($query)){
+                      if(strcmp($row['task_status'], 'Completed')==0)
+                        $task = '<span style="color:green">Completed</span>';
+                        else if(strcmp($row['task_status'], 'On Track')==0)
+                          $task = '<span style="color:darkblue">On Track</span>';
+                            else if(strcmp($row['task_status'], 'On Hold')==0)
+                              $task = '<span style="color:orange">On Hold</span>';
+                                else if(strcmp($row['task_status'], 'At Risk')==0)
+                                  $task = '<span style="color:red">At Risk</span>';
+                                    else if(strcmp($row['task_status'], 'Delayed')==0)
+                                      $task = '<span style="color:#cccc00">Delayed</span>';
+                                        else
+                                          $task = '<span>Not Started</span>';
+
                       ?>
                       <tr>
                         <td><?php echo $row['task_name']; ?></td>
                         <td><?php echo $row['task_description']; ?></td>
-                        <td style="text-align:center"><?php echo $row['task_status']; ?></td>
+                        <td style="text-align:center"><?php echo $task; ?></td>
                         <td style="text-align:center"><?php echo $row['created_date']; ?></td>
                         <td style="text-align:center"><?php echo $row['due_date']; ?></td>
                         <td style="text-align:center"><?php echo $row['completed_date']; ?></td>
@@ -184,7 +197,7 @@ $project_name = $row['project_name'];
   <!--main content end-->
   <div class="text-right">
     <div class="credits">
-      Powered by <a style="color:white" href="https://10.206.39.245/">- <b>Team Just Dance</b></a>
+      Powered by <a style="color:white" href="  http://10.206.39.245/">- <b>Team Just Dance</b></a>
     </div>
   </div>
   </section>

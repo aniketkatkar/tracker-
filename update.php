@@ -18,7 +18,9 @@ $user_email = $row['userEmail'];
 if(count($_POST)>0) {
 	$sql = "UPDATE tasks set task_name='" . $_POST["task_name"] . "', task_description='" . $_POST["task_description"] . "', task_status='" . $_POST["task_status"] . "', due_date='" . $_POST["due_date"] . "', completed_date='" . $_POST["completed_date"] . "', comment='" . $_POST["comment"] . "', created_by='" . $user_name . "' WHERE task_id='" . $_POST["task_id"] . "'";
 	mysqli_query($conn,$sql);
-	$message = "Record Modified Successfully";
+  $message = "Record Modified Successfully";
+  header( "Refresh:1; url=home.php", true, 303);
+  
 }
 $select_query = "SELECT * FROM tasks WHERE task_id='" . $_GET["task_id"] . "'";
 $result = mysqli_query($conn,$select_query);
@@ -214,9 +216,9 @@ $row = mysqli_fetch_array($result);
       </section>
     </section>
     <!--main content end-->
-    <div class="text-right">
+    <div class="pull-right">
       <div class="credits">
-        Powered by <a style="color:white" href="https://10.206.39.245/">- <b>Team Just Dance</b></a>
+        Powered by <a style="color:black" href="  http://10.206.39.245/">- <b>Team Just Dance</b></a>
       </div>
     </div>
   </section>

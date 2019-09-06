@@ -192,10 +192,10 @@ if(isset($_POST["task_id"]) && !empty($_POST["task_id"])){
       </section>
     </section>
     <!--main content end-->
-    <div class="text-right">
+    <div class="pull-right">
       <div class="credits">
           
-          Powered by <a style="color:white" href="https://10.206.39.245/">- <b>Team Just Dance</b></a>
+          Powered by <a style="color:black" href="  http://10.206.39.245/">- <b>Team Just Dance</b></a>
         </div>
     </div>
   </section>
